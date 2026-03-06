@@ -43,6 +43,11 @@ for AGENTS_MD in "$AGENTS_MD_1" "$AGENTS_MD_2"; do
     fi
     
     echo "   处理: $AGENTS_MD"
+    
+    # Backup AGENTS.md
+    BACKUP_FILE="${AGENTS_MD}.backup.$(date +%Y%m%d_%H%M%S)"
+    cp "$AGENTS_MD" "$BACKUP_FILE"
+    echo "   已备份到: $BACKUP_FILE"
 
     # Update SKILLS_SECURITY_POLICY
     if grep -q "###SKILLS_SECURITY_POLICY_START###" "$AGENTS_MD" 2>/dev/null; then
